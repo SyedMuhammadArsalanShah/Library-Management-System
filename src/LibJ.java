@@ -1,7 +1,9 @@
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -28,28 +30,18 @@ public class LibJ extends javax.swing.JFrame {
             this.authorName = authorName;
         }
 
-     
     }
-ArrayList<User> list = new ArrayList<User>();
+    ArrayList<User> list = new ArrayList<User>();
 // create a list of users
+
     public ArrayList ListUsers() {
         ArrayList<User> list = new ArrayList<User>();
-        User u1 = new User(id.getText(),book.getText(), author.getText());
+        User u1 = new User(id.getText(), book.getText(), author.getText());
         list.add(u1);
-        
-         list.contains(id.getText());
+
         return list;
     }
-    public ArrayList ListUserss() {
-        ArrayList<User> list = new ArrayList<User>();
-        if(list.contains(id.getText())){
-       
-         User u1 = new User(id.getText(),book.getText(), author.getText());
-       
-       }
-         
-        return list;
-    }
+
 // added rows from arraylist to jtable
     public void addRowToJTable() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -63,6 +55,7 @@ ArrayList<User> list = new ArrayList<User>();
         }
 
     }
+
     public void removeRowToJTable() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         ArrayList<User> list = ListUsers();
@@ -75,6 +68,7 @@ ArrayList<User> list = new ArrayList<User>();
         }
 
     }
+
     /**
      * Creates new form LibJ
      */
@@ -91,6 +85,8 @@ ArrayList<User> list = new ArrayList<User>();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -104,7 +100,13 @@ ArrayList<User> list = new ArrayList<User>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+
+        jButton1.setText("jButton1");
+
+        jButton6.setText("jButton6");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -170,17 +172,27 @@ ArrayList<User> list = new ArrayList<User>();
 
         jLabel3.setText("AuthorName ");
 
+        jButton3.setText("Print");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setText("Reset");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -193,7 +205,15 @@ ArrayList<User> list = new ArrayList<User>();
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(author, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
                                 .addComponent(book, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(id, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                                .addComponent(id, javax.swing.GroupLayout.Alignment.TRAILING))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton7)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -214,8 +234,10 @@ ArrayList<User> list = new ArrayList<User>();
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(jButton4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jButton4)
+                    .addComponent(jButton3)
+                    .addComponent(jButton7))
+                .addGap(17, 17, 17)
                 .addComponent(jButton5)
                 .addContainerGap())
         );
@@ -265,21 +287,40 @@ private JFrame frame;
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        
-        
+
         addRowToJTable();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void bookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookActionPerformed
         // TODO add your handling code here:
-       
+
     }//GEN-LAST:event_bookActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
+
         removeRowToJTable();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+
+        MessageFormat header = new MessageFormat("List Of Books");
+        MessageFormat footer = new MessageFormat("Page {0, number, integer}");
+
+        try {
+            jTable1.print(JTable.PrintMode.NORMAL, header, footer);
+        } catch (java.awt.print.PrinterException e) {
+            System.err.format("No Printer found", e.getMessage());
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+
+        DefaultTableModel RecordTable = (DefaultTableModel) jTable1.getModel();
+        RecordTable.setRowCount(0);
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -321,9 +362,13 @@ private JFrame frame;
     private javax.swing.JTextField author;
     private javax.swing.JTextField book;
     private javax.swing.JTextField id;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
